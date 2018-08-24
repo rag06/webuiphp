@@ -80,7 +80,7 @@ class Category extends REST_Controller {
 		$data=array(
 				'name'=>$this->post('name')
 		);
-         if($this->category_model->addCategory($data){
+         if($this->category_model->addCategory($data)){
 			  $message = [
 					'name' => $this->post('name')
 					'message' => 'Added Successfully'

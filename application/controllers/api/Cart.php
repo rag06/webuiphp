@@ -52,14 +52,14 @@ class Cart extends REST_Controller {
         
     }
 	
-    public function product_post()
+    public function cart_post()
     {
 		$data=array(
 				'userid'=>$this->post('userid'),
 				'productid'=>$this->post('productid'),
 				'quantity'=>$this->post('quantity')
 		);
-         if($this->cart_model->addCartItem($data){
+         if($this->cart_model->addCartItem($data)){
 			  $message = [
 					'name' => $this->post('productid')
 					'message' => 'Added Successfully'

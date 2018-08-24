@@ -85,7 +85,7 @@ class Product extends REST_Controller {
 				'price'=>$this->post('price'),
 				'createdOn'=>date('Y-m-d H:i:s')
 		);
-         if($this->product_model->addProduct($data){
+         if($this->product_model->addProduct($data)){
 			  $message = [
 					'name' => $this->post('name')
 					'message' => 'Added Successfully'
