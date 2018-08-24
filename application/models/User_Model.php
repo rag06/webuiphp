@@ -37,22 +37,22 @@ Class User_Model extends CI_Model {
 
 		}
 		
-		public function login($data) {
+	public function login($data) {
 
-			$condition = "emailId =" . "'" . $data['emailId'] . "' AND " . "password =" . "'" . $data['password'] . "'";
-			$this->db->select('*');
-			$this->db->from('users');
-			$this->db->where($condition);
-			$this->db->limit(1);
-			$query = $this->db->get();
+		$condition = "emailId =" . "'" . $data['emailId'] . "' AND " . "password =" . "'" . $data['password'] . "'";
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($condition);
+		$this->db->limit(1);
+		$query = $this->db->get();
 
-			if ($query->num_rows() == 1) {
-				return $query->result();
-				//return true;
-			} else {
-				return false;
-			}
+		if ($query->num_rows() == 1) {
+			return $query->result();
+			//return true;
+		} else {
+			return false;
 		}
+	}
 
 
 	public function deleteUser($id) {

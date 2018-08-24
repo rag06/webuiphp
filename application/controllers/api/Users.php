@@ -54,6 +54,32 @@ class Users extends REST_Controller {
         
     }
 	
+    public function logincheck_post()
+    {
+		$data=array(
+				'emailId'=>$this->post('emailId'),
+				'password'=>$this->post('password')
+		);
+		$users = $this->user_model->login($data);
+         if(!empty($users)){
+			  $message = [
+					'name' => $this->post('name'),
+					'email' => $this->post('email'),
+					'message' => 'Added a user Successfully'
+				];
+
+				$this->set_response([
+							'status' => TRUE,
+							'message' => $message 
+						], REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code */
+		 } else {
+			 $this->response([
+                    'status' => FALSE,
+                    'message' => 'Error while added user'
+                ], REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+		 }
+        
+    }
     public function user_post()
     {
 		$data=array(
