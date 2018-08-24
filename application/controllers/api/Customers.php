@@ -2,8 +2,6 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// This can be removed if you use __autoload() in config.php OR use Modular Extensions
-/** @noinspection PhpIncludeInspection */
 require APPPATH . '/libraries/REST_Controller.php';
 
 // use namespace
@@ -13,18 +11,11 @@ class Customers extends REST_Controller {
 
     function __construct()
     {
-        // Construct the parent class
         parent::__construct();
 
 		// Load database
 		$this->load->model('Customer_Model','customer_model');
 		
-        // Configure limits on our controller methods
-        // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
-        $this->methods['customers_get']['limit'] = 10000; // 500 requests per hour per user/key
-        $this->methods['customers_post']['limit'] = 1000; // 100 requests per hour per user/key
-        $this->methods['customers_put']['limit'] = 1000; // 100 requests per hour per user/key
-        $this->methods['customers_delete']['limit'] = 1000; // 50 requests per hour per user/key
     }
 
     public function customers_get()
